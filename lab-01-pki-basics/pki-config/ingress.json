@@ -1,0 +1,19 @@
+{
+  "CN": "ingress.coastalcontainers.example",
+  "key": {
+    "algo": "rsa",
+    "size": 4096
+  },
+  "names": [
+    {
+      "C": "UK",
+      "L": "London",
+      "O": "CoastalContainers",
+      "OU": "Ingress"
+    }
+  ],
+  "hosts": [
+    "ingress.coastalcontainers.example",
+    "localhost"
+  ]
+}

@@ -1,0 +1,52 @@
+global:
+  spire:
+    clusterName: kind-kind
+    trustDomain: coastal-containers.example
+spire-server:
+  replicaCount: 3
+  ca_subject:
+    country: UK
+    organization: CoastalContainers
+    common_name: Coastal Containers Ltd
+  controllerManager:
+    enabled: true
+    image:
+      registry: ""
+      pullPolicy: Never
+      tag: latest
+  image:
+    registry: ""
+    pullPolicy: Never
+    tag: latest
+  dataStore:
+    sql:
+      databaseType: postgres
+      databaseName: spire
+      host: spire-db
+      port: 5432
+      username: spire
+      password: coastal-containers
+      options:
+        - sslmode: disable
+spiffe-oidc-discovery-provider:
+  enabled: false
+spire-agent:
+  image:
+    registry: ""
+    pullPolicy: Never
+    tag: latest
+  waitForIt:
+    image:
+      registry: ""
+      pullPolicy: Never
+      tag: latest
+spiffe-csi-driver:
+  image:
+    registry: ""
+    pullPolicy: Never
+    tag: latest
+  nodeDriverRegistrar:
+    image:
+      registry: ""
+      pullPolicy: Never
+      tag: latest

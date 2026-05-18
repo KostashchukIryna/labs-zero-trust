@@ -1,0 +1,73 @@
+global:
+  spire:
+    clusterName: kind-kind
+    jwtIssuer: 127.0.0.1.nip.io
+    trustDomain: coastal-containers.example
+spire-server:
+  caSubject:
+    country: UK
+    organization: CoastalContainers
+    commonName: Coastal Containers Ltd
+  caName: "Coastal Containers Root CA"
+  controllerManager:
+    enabled: true
+    image:
+      registry: ""
+      pullPolicy: Never
+      tag: latest
+  defaultJwtSvidTTL: 15m
+  image:
+    registry: ""
+    pullPolicy: Never
+    tag: latest
+spiffe-oidc-discovery-provider:
+  enabled: true
+  tls:
+    spire:
+      enabled: false
+  insecureScheme:
+    enabled: true
+  ingress:
+    enabled: true
+    className: contour
+    annotations:
+      cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+      ingress.kubernetes.io/force-ssl-redirect: "true"
+    hosts:
+      - host: 127.0.0.1.nip.io
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: oidc-discovery
+        hosts:
+          - 127.0.0.1.nip.io
+  image:
+    registry: ""
+    pullPolicy: Never
+    tag: latest
+  spiffeHelper:
+    image:
+      registry: ""
+      pullPolicy: Never
+      tag: latest
+spire-agent:
+  image:
+    registry: ""
+    pullPolicy: Never
+    tag: latest
+  waitForIt:
+    image:
+      registry: ""
+      pullPolicy: Never
+      tag: latest
+spiffe-csi-driver:
+  image:
+    registry: ""
+    pullPolicy: Never
+    tag: latest
+  nodeDriverRegistrar:
+    image:
+      registry: ""
+      pullPolicy: Never
+      tag: latest

@@ -1,0 +1,20 @@
+{
+  "CN": "backend.coastalcontainers.example",
+  "key": {
+    "algo": "rsa",
+    "size": 4096
+  },
+  "names": [
+    {
+      "C": "UK",
+      "L": "London",
+      "O": "CoastalContainers",
+      "OU": "Backend"
+    }
+  ],
+  "hosts": [
+    "backend.coastalcontainers.example",
+    "localhost",
+    "backend"
+  ]
+}
